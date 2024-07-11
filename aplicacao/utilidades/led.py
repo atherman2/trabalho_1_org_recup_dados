@@ -6,16 +6,16 @@ class Membro_led:
         self.tam:int = 0
         self.prox:int = 0
 
-def remove_primeiro_da_led(arq: io.BufferedRandom) -> Membro_led:
+def remove_da_led(arq: io.BufferedRandom, b_o_ant) -> Membro_led:
     byte_offset_inicial = arq.tell()
-    arq.seek(0, os.SEEK_SET)
+    arq.seek(b_o_ant, os.SEEK_SET)
 
-    b_o_primeiro_regis = int.from_bytes(arq.read(4))
+    b_o_regis = int.from_bytes(arq.read(4))
     
     antigo_primeiro = Membro_led()
-    antigo_primeiro.byte_offset = b_o_primeiro_regis
+    antigo_primeiro.byte_offset = b_o_regis
     
-    arq.seek(b_o_primeiro_regis, os.SEEK_SET)
+    arq.seek(b_o_regis, os.SEEK_SET)
     antigo_primeiro.tam = int.from_bytes(arq.read(2))
 
     arq.seek(1, os.SEEK_CUR)
