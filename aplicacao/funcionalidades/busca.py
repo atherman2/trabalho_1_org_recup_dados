@@ -5,12 +5,16 @@ import utilidades as u
 # def busca(arq:io.BufferedReader, chave:str):
 def busca(arq: io.BufferedReader, chave:str):
     byte_offset_inicial = arq.tell()
-    bin_cabecalho = arq.read(4)
-    contador = 1
-    while u.tem_registro(arq):
-        #print(u.le_chave())
-        u.le_chave()
-        print(contador)
-        tam_regis:int = int.from_bytes(arq.read(2))
-        arq.seek(tam_regis, os.SEEK_CUR)
-        contador += 1
+    #bin_cabecalho = arq.read(4)
+    #contador = 1
+    #while u.tem_registro(arq):
+    #    print(u.le_chave())
+    #    u.le_chave()
+    #    print(contador)
+    #    tam_regis:int = int.from_bytes(arq.read(2))
+    #    arq.seek(tam_regis, os.SEEK_CUR)
+    #    contador += 1
+
+    byte_offset_com_a_chave = u.byte_offset(arq, chave)
+    arq.seek(byte_offset_com_a_chave, os.SEEK_SET)
+    u.le_registro(arq)
