@@ -1,1 +1,2 @@
 from utilidades.le_chave import le_chave
+from utilidades.tem_registro import tem_registro
