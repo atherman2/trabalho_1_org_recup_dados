@@ -6,16 +6,32 @@ class Membro_led:
         self.tam:int = 0
         self.prox:int = 0
 
-def remove_da_led(arq: io.BufferedRandom, b_o_ant:int) -> Membro_led:
-    byte_offset_inicial = arq.tell()
+def acessa_prox_led(arq: io.BufferedRandom, b_o_ant: int) -> None:
     arq.seek(b_o_ant, os.SEEK_SET)
 
     b_o_regis = int.from_bytes(arq.read(4))
+    arq.seek(b_o_regis)
+
+def tam_regis_da_led(arq: io.BufferedRandom, b_o_ant: int) -> int:
+    byte_offset_inicial = arq.tell()
+    acessa_prox_led(arq, b_o_ant)
+
+    tam_regis = arq.read(2)
+    tam_regis = int.from_bytes(tam_regis)
+
+    arq.seek(byte_offset_inicial, os.SEEK_SET)
+    return tam_regis
+
+
+def remove_da_led(arq: io.BufferedRandom, b_o_ant: int) -> Membro_led:
+    byte_offset_inicial = arq.tell()
     
+    acessa_prox_led(arq, b_o_ant)
+    b_o_regis = arq.tell()
+
     antigo_primeiro = Membro_led()
     antigo_primeiro.byte_offset = b_o_regis
     
-    arq.seek(b_o_regis, os.SEEK_SET)
     antigo_primeiro.tam = int.from_bytes(arq.read(2))
 
     arq.seek(1, os.SEEK_CUR)
