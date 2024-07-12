@@ -6,7 +6,7 @@ class Membro_led:
         self.tam:int = 0
         self.prox:int = 0
 
-def remove_da_led(arq: io.BufferedRandom, b_o_ant) -> Membro_led:
+def remove_da_led(arq: io.BufferedRandom, b_o_ant:int) -> Membro_led:
     byte_offset_inicial = arq.tell()
     arq.seek(b_o_ant, os.SEEK_SET)
 
