@@ -18,13 +18,17 @@ def b_o_prox_led(arq: io.BufferedRandom, b_o_ant: int) -> int:
 
 def tam_regis_da_led(arq: io.BufferedRandom, b_o_ant: int) -> int:
     byte_offset_inicial = arq.tell()
-    arq.seek(b_o_prox_led(arq, b_o_ant))
+    b_o_prox_da_led = b_o_prox_led(arq, b_o_ant)
+    if b_o_prox_da_led == -1:
+        return -1
+    else:
+        arq.seek(b_o_prox_da_led, os.SEEK_SET)
 
-    tam_regis = arq.read(2)
-    tam_regis = int.from_bytes(tam_regis)
+        tam_regis = arq.read(2)
+        tam_regis = int.from_bytes(tam_regis)
 
-    arq.seek(byte_offset_inicial, os.SEEK_SET)
-    return tam_regis
+        arq.seek(byte_offset_inicial, os.SEEK_SET)
+        return tam_regis
 
 
 def remove_da_led(arq: io.BufferedRandom, b_o_ant: int) -> Membro_led:

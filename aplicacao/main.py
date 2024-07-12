@@ -7,4 +7,6 @@ import utilidades as u
 #arq:io.BufferedReader = open("./aplicacao/dados.dat", "rb")
 #f.busca(arq, "22")
 
-u.testa_dat()
+#u.testa_dat()
+
+f.insere_registro(open('./aplicacao/dados2.dat', 'r+b'), '1|2|3|4|5|6|')

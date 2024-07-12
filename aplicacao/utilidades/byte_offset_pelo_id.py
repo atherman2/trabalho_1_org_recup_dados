@@ -1,5 +1,5 @@
-import io
-import os
+import io, os
+import utilidades as u
 
 def byte_offset(entrada: io.BufferedReader, id: str) -> int:
     ''' Toma como entrada uma String "arqv" correspondente ao nome de um arquivo e outra String 
