@@ -14,12 +14,18 @@ if __name__ == '__main__':
     arq.close()
     if sys.argv[1] == '-e':
         arq_operacoes: io.BufferedReader = open(sys.argv[2], 'rt')
+        #leitura = arq_operacoes.readline()
         while (leitura := arq_operacoes.readline()):
+            nova_leitura = ''
+            for char in leitura:
+                if char != '\n':
+                    nova_leitura += char
+            leitura = nova_leitura
             if leitura[0] == 'b':
                 arq: io.BufferedReader = open('./aplicacao/dados2.dat', 'rb')
-                print(type('22'))
-                print(leitura[2:])
-                print(type(leitura[2:]))
+                #print(type('22'))
+                #print(leitura[2:])
+                #print(type(leitura[2:]))
                 f.busca(arq, leitura[2:])
                 print()
                 arq.close()
