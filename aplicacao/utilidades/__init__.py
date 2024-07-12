@@ -6,3 +6,4 @@ from utilidades.led import Membro_led
 from utilidades.led import acessa_prox_led
 from utilidades.led import tam_regis_da_led
 from utilidades.led import remove_da_led
+from utilidades.testa_dat import testa_dat

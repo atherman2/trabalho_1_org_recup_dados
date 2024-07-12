@@ -8,7 +8,8 @@ class Membro_led:
 
 def acessa_prox_led(arq: io.BufferedRandom, b_o_ant: int) -> None:
     arq.seek(b_o_ant, os.SEEK_SET)
-
+    if b_o_ant != 0:
+        arq.seek(3, os.SEEK_CUR)
     b_o_regis = int.from_bytes(arq.read(4))
     arq.seek(b_o_regis)
 
