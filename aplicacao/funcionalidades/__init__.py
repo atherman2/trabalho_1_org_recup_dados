@@ -1,2 +1,6 @@
 from funcionalidades.busca import busca
 from funcionalidades.testes import teste
+from funcionalidades.insere_na_LED import insere_na_LED
+from funcionalidades.remove_registro import tam_reg_byte_os
+from funcionalidades.remove_registro import tam_reg_id
+from funcionalidades.remove_registro import remove_registro
