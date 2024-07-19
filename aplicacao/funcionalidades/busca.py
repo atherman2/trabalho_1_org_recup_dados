@@ -4,6 +4,7 @@ import utilidades as u
 
 # def busca(arq:io.BufferedReader, chave:str):
 def busca(arq: io.BufferedReader, chave:str):
+    print(f'Busca pelo registro de chave "{chave}"')
     byte_offset_inicial = arq.tell()
     #bin_cabecalho = arq.read(4)
     #contador = 1

@@ -23,9 +23,6 @@ if __name__ == '__main__':
             leitura = nova_leitura
             if leitura[0] == 'b':
                 arq: io.BufferedReader = open('./aplicacao/dados2.dat', 'rb')
-                #print(type('22'))
-                #print(leitura[2:])
-                #print(type(leitura[2:]))
                 f.busca(arq, leitura[2:])
                 print()
                 arq.close()
