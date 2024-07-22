@@ -12,6 +12,7 @@ if __name__ == '__main__':
     arq = open('./aplicacao/dados2.dat', 'rb')
     #f.busca(arq, '22')
     arq.close()
+    print()
     if sys.argv[1] == '-e':
         arq_operacoes: io.BufferedReader = open(sys.argv[2], 'rt')
         #leitura = arq_operacoes.readline()
