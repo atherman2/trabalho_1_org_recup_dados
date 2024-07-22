@@ -12,7 +12,7 @@ def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
         primeiro_da_led: u.Membro_led = u.remove_da_led(arq, 0)
         b_o_1o_led = primeiro_da_led.byte_offset
         insere_registro_2(arq, registro, b_o_1o_led)
-        print(f'Local: offset = {b_o_1o_led} bytes (){hex(b_o_1o_led)}')
+        print(f'Local: offset = {b_o_1o_led} bytes ({hex(b_o_1o_led)})')
         if tam_disp - tam_regis >= 32:
             pass
             #insere_na_led(arq, primeiro_da_led, tam_regis)

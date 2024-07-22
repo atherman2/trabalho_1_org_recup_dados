@@ -29,6 +29,6 @@ if __name__ == '__main__':
             elif leitura[0] == 'i':
                 arq: io.BufferedRandom = open('./aplicacao/dados2.dat', 'r+b')
                 f.insere_registro(arq, leitura[2:])
-                print('/')
+                print()
 
 #f.insere_registro(open('./aplicacao/dados2.dat', 'r+b'), '1|2|3|4|5|6|')
