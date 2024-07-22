@@ -7,15 +7,18 @@ def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
     tam_regis: int = len(registro)
     tam_disp: int = u.tam_regis_da_led(arq, 0)
     print(f'Inserção do registro de chave "{chave}" ({tam_regis} bytes)')
-    if tam_disp >= tam_regis:
+    if tam_disp - 2 >= tam_regis:
         # b_o_primeiro_da_led = u.b_o_prox_da_led(arq, 0)
         primeiro_da_led: u.Membro_led = u.remove_da_led(arq, 0)
         b_o_1o_led = primeiro_da_led.byte_offset
         insere_registro_2(arq, registro, b_o_1o_led)
-        print(f'Local: offset = {b_o_1o_led} bytes ({hex(b_o_1o_led)})')
         if tam_disp - tam_regis >= 32:
             pass
-            #insere_na_led(arq, primeiro_da_led, tam_regis)
+            #insere_na_led(arq, primeiro_da_led, tam_disp - tam_regis - 2)
+        else:
+            tam_restante = tam_disp - 2 - tam_regis
+            bin_tam_restante = tam_restante.to_bytes(2)
+            arq.write(bin_tam_restante)
     else:
         insere_registro_2(arq, registro, -1)
     arq.seek(byte_offset_inicial, os.SEEK_SET)
@@ -24,8 +27,10 @@ def insere_registro_2(arq: io.BufferedRandom, registro: str, byte_offset: int) -
     byte_offset_inicial = arq.tell()
     if byte_offset == -1:
         arq.seek(0, os.SEEK_END)
+        print(f'Local: fim do arquivo')
     else:
         arq.seek(byte_offset, os.SEEK_SET)
+        print(f'Local: offset = {byte_offset} bytes ({hex(byte_offset)})')
     registro = registro.encode()
     arq.write(registro)
     arq.seek(byte_offset_inicial, os.SEEK_SET)
