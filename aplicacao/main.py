@@ -5,4 +5,5 @@ import funcionalidades as f
 import utilidades as u
 
 a = open('aplicacao/dados.dat', 'r+b')
-print(f.mensagem_LED(f.matriz_LED(a)))
+f.remove_registro_b(a, '100')
+f.imprime_mensagem_LED(f.matriz_LED(a))
