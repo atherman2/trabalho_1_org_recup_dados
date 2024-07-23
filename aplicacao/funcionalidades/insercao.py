@@ -14,7 +14,6 @@ def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
         b_o_1o_led = primeiro_da_led.byte_offset
         insere_registro_2(arq, registro, b_o_1o_led)
         if tam_disp - tam_regis >= 32:
-            pass
             #insere_na_led(arq, primeiro_da_led, tam_disp - tam_regis - 2)
             b_o_restante = b_o_1o_led + tam_regis + 2
             f.insere_na_LED_b(arq, b_o_restante, tam_disp - tam_regis - 2)
@@ -35,5 +34,7 @@ def insere_registro_2(arq: io.BufferedRandom, registro: str, byte_offset: int) -
         arq.seek(byte_offset, os.SEEK_SET)
         print(f'Local: offset = {byte_offset} bytes ({hex(byte_offset)})')
     registro = registro.encode()
+    tam = (len(registro)).to_bytes(2, 'big', signed = True)
+    arq.write(tam)
     arq.write(registro)
     arq.seek(byte_offset_inicial, os.SEEK_SET)

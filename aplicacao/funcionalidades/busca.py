@@ -16,7 +16,10 @@ def busca(arq: io.BufferedReader, chave:str):
     #    arq.seek(tam_regis, os.SEEK_CUR)
     #    contador += 1
 
-    byte_offset_com_a_chave = u.byte_offset(arq, chave)
-    arq.seek(byte_offset_com_a_chave, os.SEEK_SET)
-    u.le_registro(arq)
+    byte_offset_com_a_chave = u.byte_offset_b(arq, chave)
+    if byte_offset_com_a_chave == -1:
+        print('Erro: registro não encontrado!')
+    else:
+        arq.seek(byte_offset_com_a_chave, os.SEEK_SET)
+        u.le_registro(arq)
     arq.seek(byte_offset_inicial, os.SEEK_SET)

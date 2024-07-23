@@ -2,5 +2,12 @@
 #i 147|Resident Evil 2|1998|Survival horror|Capcom|PlayStation|
 #b 85
 #b 147
-r 147
+#
+#b 97
+#b 147
+#
+r 1
 i 147|R|1998|S|C|P|
+b 147
+b 97
+b 2
