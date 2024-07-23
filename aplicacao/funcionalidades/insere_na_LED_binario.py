@@ -16,6 +16,8 @@ def insere_na_LED_b(entrada: io.BufferedReader, os:int, tam:int) -> None:
         percorre_LED = entrada.read(4)
         percorre_LED_int = int.from_bytes(percorre_LED, 'big', signed = True)
     entrada.seek(os + 2)
-    entrada.write(b'*' + percorre_LED)
+    asterisco = '*'
+    bin_asterisco = asterisco.encode()
+    entrada.write(bin_asterisco + percorre_LED)
     entrada.seek(byte_os_LED_seek)
     entrada.write(os.to_bytes(4, 'big', signed = True))

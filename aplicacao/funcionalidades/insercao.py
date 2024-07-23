@@ -1,5 +1,6 @@
 import io, os
 import utilidades as u
+import funcionalidades as f
 
 def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
     chave = registro.split('|')[0]
@@ -7,7 +8,7 @@ def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
     tam_regis: int = len(registro)
     tam_disp: int = u.tam_regis_da_led(arq, 0)
     print(f'Inserção do registro de chave "{chave}" ({tam_regis} bytes)')
-    if tam_disp - 2 >= tam_regis:
+    if tam_disp - 4 >= tam_regis:
         # b_o_primeiro_da_led = u.b_o_prox_da_led(arq, 0)
         primeiro_da_led: u.Membro_led = u.remove_da_led(arq, 0)
         b_o_1o_led = primeiro_da_led.byte_offset
@@ -15,6 +16,8 @@ def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
         if tam_disp - tam_regis >= 32:
             pass
             #insere_na_led(arq, primeiro_da_led, tam_disp - tam_regis - 2)
+            b_o_restante = b_o_1o_led + tam_regis + 2
+            f.insere_na_LED_b(arq, b_o_restante, tam_disp - tam_regis - 2)
         else:
             tam_restante = tam_disp - 2 - tam_regis
             bin_tam_restante = tam_restante.to_bytes(2)
