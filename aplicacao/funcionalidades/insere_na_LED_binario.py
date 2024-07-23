@@ -1,7 +1,7 @@
 import funcionalidades as f
 import io
 
-def insere_na_LED_b(entrada: io.BufferedReader, os:int, tam:int) -> None:
+def insere_na_LED_b(entrada: io.BufferedReader, os:int, tam:int, insere_tam:bool) -> None:
     '''Toma como entrada um arquivo "arqv", o byte offset "os" de um registro e o tamanho "tam"
     desse registro. Com isso, insere esses valores na LED do arquivo'''
     if os < 0 or tam < 0:
@@ -15,9 +15,12 @@ def insere_na_LED_b(entrada: io.BufferedReader, os:int, tam:int) -> None:
         entrada.seek(byte_os_LED_seek)
         percorre_LED = entrada.read(4)
         percorre_LED_int = int.from_bytes(percorre_LED, 'big', signed = True)
-    entrada.seek(os + 2)
-    asterisco = '*'
-    bin_asterisco = asterisco.encode()
-    entrada.write(bin_asterisco + percorre_LED)
+    if insere_tam:
+        entrada.seek(os)
+        entrada.write(os.to_bytes(2, 'big', signed = True))
+    else:
+        entrada.seek(os + 2)
+    entrada.write(b'*' + percorre_LED)
     entrada.seek(byte_os_LED_seek)
     entrada.write(os.to_bytes(4, 'big', signed = True))
+    entrada.seek(0)

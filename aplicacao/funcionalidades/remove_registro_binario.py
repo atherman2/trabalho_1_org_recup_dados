@@ -6,8 +6,12 @@ def remove_registro_b(entrada: io.BufferedReader, id: str) -> None:
     '''Toma como entrada um arquivo arqv e um id e remove o registro correspondente, deixando o
     espaço disponível para novas inserções a partir de uma LED worst fit.'''
     byte_os_id = u.byte_offset_b(entrada, id)
-    tam_id = tam_reg_id_b(entrada, id)
-    f.insere_na_LED_b(entrada, byte_os_id, tam_id)
+    if byte_os_id == -1:
+        print('Remoção do registro de chave "' + id + '"\nErro: registro não encontrado!')
+    else:
+        tam_id = tam_reg_id_b(entrada, id)
+        f.insere_na_LED_b(entrada, byte_os_id, tam_id, False)
+        print('Remoção do registro de chave "' + id + '"\nRegistro removido! (' + str(tam_id) + ' bytes)\nLocal: offset = ' + str(byte_os_id) + ' bytes (' + str(hex(byte_os_id)) + ')')
 
 def tam_reg_byte_os_b(entrada: io.BufferedReader, byte_offset_id: int) -> int:
     '''Função que toma como entrada um aquivo arqv e um byte offset de um registro e retorna o tamanho desse

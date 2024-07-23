@@ -17,9 +17,10 @@ def matriz_LED(entrada: io.BufferedReader) -> list[list[int]]:
         percorre_LED_int = int.from_bytes(percorre_LED, 'big', signed = True)
     return m
 
-def mensagem_LED(matriz_LED:list[list[int]]) -> str:
+def imprime_mensagem_LED(matriz_LED:list[list[int]]) -> str:
     mensagem:str = 'LED '
     for i in matriz_LED:
         mensagem += '-> [offset: ' + str(i[0]) + ', tam: '+ str(i[1]) + '] '
     mensagem += '-> [offset: -1] \n Total: ' + str(len(matriz_LED)) + ' espacos disponiveis'
+    print(mensagem)
     return mensagem

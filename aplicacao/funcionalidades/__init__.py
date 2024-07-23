@@ -9,5 +9,6 @@ from funcionalidades.remove_registro_binario import tam_reg_id_b
 from funcionalidades.remove_registro_binario import remove_registro_b
 from funcionalidades.insere_na_LED_binario import insere_na_LED_b
 from funcionalidades.imprime_led import matriz_LED
+from funcionalidades.imprime_led import imprime_mensagem_LED
 from funcionalidades.imprime_led import mensagem_LED
 from funcionalidades.insercao import insere_registro
