@@ -16,7 +16,9 @@ def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
         if tam_disp - tam_regis >= 32:
             #insere_na_led(arq, primeiro_da_led, tam_disp - tam_regis - 2)
             b_o_restante = b_o_1o_led + tam_regis + 2
-            f.insere_na_LED_b(arq, b_o_restante, tam_disp - tam_regis - 2)
+            tam_restante = tam_disp - tam_regis - 2
+            #print(f'Tam_restante em insere_registro = {tam_restante}')
+            f.insere_na_LED_b(arq, b_o_restante, tam_restante, True)
         else:
             tam_restante = tam_disp - 2 - tam_regis
             bin_tam_restante = tam_restante.to_bytes(2)
