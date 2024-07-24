@@ -1,0 +1,50 @@
+b 22
+i 147|Resident Evil 2|1998|Survival horror|Capcom|PlayStation|
+b 147
+r 99
+r 230
+i 181|Pac-Man|1980|Maze|Namco|Arcade|
+b 181
+i 144|The Sims|2000|Life simulation|Electronic Arts|PC|
+b 144
+i 219|The Legend of Zelda: Tears of the Kingdom|2023|Action-adventure|Nintendo|Nintendo Switch|
+b 219
+r 200
+r 10
+r 1
+r 2
+r 3
+b 10
+b 27 
+i 160|Xenoblade Chronicles 3|2022|RPG|Monolith Soft|Nintendo Switch|
+b 160
+r 100
+r 30
+r 40
+r 30
+r 40
+i 151|No More Heroes|2007|Hack n'Slash|Grasshopper Manufacture|Nintendo Wii|
+b 151
+i 152|Flower, Sun, and Rain|2001|Adventure|Grasshopper Manufacture|PlayStation 2|
+b 152
+i 153|The 25th Ward: The Silver Case|2018|Visual Novel|Grasshopper Manufacture|PC|
+b 153
+i 154|The Silver Case|2016|Visual Novel|Grasshopper Manufacture|PC|
+b 154
+i 155|Killer 7|2005|Action-adventure|Grasshopper Manufacture|Nintendo GameCube|
+b 155
+i 312|The Legend of Zelda: Link's Awakening|2019|Action-adventure|Nintendo|Nintendo Switch|
+b 312
+r 17
+i 17|Final Fantasy VII|1997|RPG|Square Product Development Division 1|PlayStation|
+b 17
+r 13
+r 15
+r 17
+r 19
+r 200
+r 151
+b 151
+r 300
+b 300
+

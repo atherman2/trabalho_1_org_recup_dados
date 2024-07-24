@@ -23,20 +23,28 @@ if __name__ == '__main__':
                 if char != '\n':
                     nova_leitura += char
             leitura = nova_leitura
-            if leitura[0] == 'b':
-                arq: io.BufferedReader = open(endereco_arq, 'rb')
-                f.busca(arq, leitura[2:])
-                print()
-                arq.close()
-            elif leitura[0] == 'i':
-                arq: io.BufferedRandom = open(endereco_arq, 'r+b')
-                f.insere_registro(arq, leitura[2:])
-                print()
-                arq.close()
-            elif leitura[0] == 'r':
-                arq: io.BufferedRandom = open(endereco_arq, 'r+b')
-                f.remove_registro_b(arq, leitura[2:])
-                print()
-                arq.close()
+            if len(leitura) > 0:
+                if leitura[0] == 'b':
+                    arq: io.BufferedReader = open(endereco_arq, 'rb')
+                    f.busca(arq, leitura[2:])
+                    print()
+                    arq.close()
+                elif leitura[0] == 'i':
+                    arq: io.BufferedRandom = open(endereco_arq, 'r+b')
+                    f.insere_registro(arq, leitura[2:])
+                    print()
+                    arq.close()
+                elif leitura[0] == 'r':
+                    arq: io.BufferedRandom = open(endereco_arq, 'r+b')
+                    f.remove_registro_b(arq, leitura[2:])
+                    print()
+                    arq.close()
+    elif sys.argv[1] == '-p':
+        arq: io.BufferedReader = open(endereco_arq, 'rb')
+        matriz = f.matriz_LED(arq)
+        string = f.imprime_mensagem_LED(matriz)
+        arq.close()
+        #print(string)
+        print()
 
 #f.insere_registro(open('./aplicacao/dados2.dat', 'r+b'), '1|2|3|4|5|6|')
