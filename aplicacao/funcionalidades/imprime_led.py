@@ -1,11 +1,9 @@
-# Fazer matrix com os byte offsets e tamanhos de espaço disponíveis
-# Deixar a formatação bonitinha numa String
-# printar com a flag no main
 import io
 import funcionalidades as f
+
 def matriz_LED(entrada: io.BufferedReader) -> list[list[int]]:
-    '''Toma como entrada um arquivo "arqv", o byte offset "os" de um registro e o tamanho "tam"
-    desse registro. Com isso, insere esses valores na LED do arquivo'''
+    ''' Toma como entrada um arquivo já aberto/interpretado "entrada". Retorna uma matriz que
+    armazena os valores dos byte offset e tamanhos dos espaços disponíveis da LED'''
     entrada.seek(0)
     percorre_LED = entrada.read(4)
     percorre_LED_int = int.from_bytes(percorre_LED, 'big', signed = True)
@@ -18,6 +16,9 @@ def matriz_LED(entrada: io.BufferedReader) -> list[list[int]]:
     return m
 
 def imprime_mensagem_LED(matriz_LED:list[list[int]]) -> str:
+    ''' Toma como entrada a matriz retornada pela função "matriz_LED", que armazena os valores dos
+    byte offset e tamanhos dos espaços disponíveis da LED. Retorna uma Strig com a formatação
+    correta dos valores já descritos. Além disso, printa-a'''
     mensagem:str = 'LED '
     for i in matriz_LED:
         mensagem += '-> [offset: ' + str(i[0]) + ', tam: '+ str(i[1]) + '] '

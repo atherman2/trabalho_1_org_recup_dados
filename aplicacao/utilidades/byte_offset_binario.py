@@ -3,6 +3,7 @@ import io
 def byte_offset_b(entrada: io.BufferedReader, id: str) -> int:
     ''' Toma como entrada um arquivo aberto em modo 'r+b' e uma String "id" correspondente ao id de
     um registro do já citado arquivo. Retorna o byte-offset do id.
+    # Exemplos feitos para um 'dados.dat' intacto 
     >>> a = open('dados.dat', 'r+b')
     >>> byte_offset_b(a, '1')
     4

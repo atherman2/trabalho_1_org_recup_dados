@@ -1,5 +1,5 @@
-# onde vai ficar a aplicação principal
-# provavelmente o menu principal que ficou comigo, Alex
+# Aplicação principal
+# O menu principal que ficou comigo, Alex
 import os, io, sys
 import funcionalidades as f
 import utilidades as u
@@ -12,7 +12,7 @@ if __name__ == '__main__':
     #arq = open('./aplicacao/dados2.dat', 'rb')
     #f.busca(arq, '22')
     #arq.close()
-    endereco_arq = './aplicacao/dados_o2.dat'
+    endereco_arq = './aplicacao/dados_original copy.dat'
     print()
     if sys.argv[1] == '-e':
         arq_operacoes: io.BufferedReader = open(sys.argv[2], 'rt')
