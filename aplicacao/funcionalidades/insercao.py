@@ -38,7 +38,32 @@ def insere_registro_2(arq: io.BufferedRandom, registro: str, byte_offset: int) -
         arq.seek(byte_offset, os.SEEK_SET)
         print(f'Local: offset = {byte_offset} bytes ({hex(byte_offset)})')
     registro = registro.encode()
-    tam = (len(registro)).to_bytes(2, 'big', signed = True)
-    arq.write(tam)
-    arq.write(registro)
+    
+    
+    tam = len(registro)
+
+    
+    if tam == 10:
+        sub_tam = 4
+        bin_sub_tam = sub_tam.to_bytes(2, 'big', signed = True)
+        arq.write(bin_sub_tam)
+        arq.seek(sub_tam, os.SEEK_CUR)
+        arq.write(bin_sub_tam)
+    elif tam == 13:
+        sub_tam = 4
+        bin_sub_tam = sub_tam.to_bytes(2, 'big', signed = True)
+        arq.write(bin_sub_tam)
+        arq.seek(sub_tam, os.SEEK_CUR)
+        sub_tam = 7
+        bin_sub_tam = sub_tam.to_bytes(2, 'big', signed = True)
+        arq.write(bin_sub_tam)
+    else:
+        arq.write(tam.to_bytes(2, 'big', signed = True))
+    
+    
+    
+    
+    #tam = (len(registro)).to_bytes(2, 'big', signed = True)
+    #arq.write(tam)
+    #arq.write(registro)
     arq.seek(byte_offset_inicial, os.SEEK_SET)
