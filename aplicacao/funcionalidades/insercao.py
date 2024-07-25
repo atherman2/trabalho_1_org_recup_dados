@@ -23,6 +23,30 @@ def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
             b_o_restante = b_o_1o_led + tam_regis + 2
             arq.seek(b_o_restante, os.SEEK_SET)
             tam_restante = tam_disp - 2 - tam_regis
+
+
+
+
+            if tam_restante == 10:
+                sub_tam = 4
+                bin_sub_tam = sub_tam.to_bytes(2, 'big', signed = True)
+                arq.write(bin_sub_tam)
+                arq.seek(sub_tam, os.SEEK_CUR)
+                arq.write(bin_sub_tam)
+            elif tam_restante == 13:
+                sub_tam = 4
+                bin_sub_tam = sub_tam.to_bytes(2, 'big', signed = True)
+                arq.write(bin_sub_tam)
+                arq.seek(sub_tam, os.SEEK_CUR)
+                sub_tam = 7
+                bin_sub_tam = sub_tam.to_bytes(2, 'big', signed = True)
+                arq.write(bin_sub_tam)
+            else:
+                arq.write(tam_restante.to_bytes(2, 'big', signed = True))            
+
+
+
+
             bin_tam_restante = tam_restante.to_bytes(2, 'big', signed = True)
             arq.write(bin_tam_restante)
     else:
@@ -40,7 +64,7 @@ def insere_registro_2(arq: io.BufferedRandom, registro: str, byte_offset: int) -
     registro = registro.encode()
     
     
-    tam = len(registro)
+    '''tam = len(registro)
 
     
     if tam == 10:
@@ -59,11 +83,11 @@ def insere_registro_2(arq: io.BufferedRandom, registro: str, byte_offset: int) -
         arq.write(bin_sub_tam)
     else:
         arq.write(tam.to_bytes(2, 'big', signed = True))
+    '''
     
     
     
-    
-    #tam = (len(registro)).to_bytes(2, 'big', signed = True)
-    #arq.write(tam)
-    #arq.write(registro)
+    tam = (len(registro)).to_bytes(2, 'big', signed = True)
+    arq.write(tam)
+    arq.write(registro)
     arq.seek(byte_offset_inicial, os.SEEK_SET)
