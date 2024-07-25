@@ -23,7 +23,7 @@ def insere_registro(arq: io.BufferedRandom, registro: str) -> None:
             b_o_restante = b_o_1o_led + tam_regis + 2
             arq.seek(b_o_restante, os.SEEK_SET)
             tam_restante = tam_disp - 2 - tam_regis
-            bin_tam_restante = tam_restante.to_bytes(2)
+            bin_tam_restante = tam_restante.to_bytes(2, 'big', signed = True)
             arq.write(bin_tam_restante)
     else:
         insere_registro_2(arq, registro, -1)

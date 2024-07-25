@@ -39,6 +39,7 @@ if __name__ == '__main__':
                     f.remove_registro_b(arq, leitura[2:])
                     print()
                     arq.close()
+        arq_operacoes.close()
     elif sys.argv[1] == '-p':
         arq: io.BufferedReader = open(endereco_arq, 'rb')
         matriz = f.matriz_LED(arq)
